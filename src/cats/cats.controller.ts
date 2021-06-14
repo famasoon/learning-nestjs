@@ -8,8 +8,8 @@ export class CatsController {
   }
 
   @Get()
-  findAll(): string {
-    return 'This action returns all cats';
+  async findAll(): Promise<string> {
+    return 'This action return cats';
   }
 
   @Get('docs')
