@@ -26,6 +26,8 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+そしてこのリポジトリでは https://zenn.dev/kisihara_c/books/nest-officialdoc-jp の内容を学ぶ
+
 ## Installation
 
 ```bash
