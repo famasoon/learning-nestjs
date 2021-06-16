@@ -1,12 +1,8 @@
-import { Controller, Get, Post, Query, Redirect } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, Redirect } from '@nestjs/common';
+import { CreateCatDto } from './dto/create-cat.dto';
 
 @Controller('cats')
 export class CatsController {
-  @Post()
-  create(): string {
-    return 'This Action adds a new cat';
-  }
-
   @Get()
   async findAll(): Promise<string> {
     return 'This action return cats';
@@ -18,5 +14,10 @@ export class CatsController {
     if (version && version === '5') {
       return { url: 'https://docs.nestjs.com/v5/' };
     }
+  }
+
+  @Post()
+  async create(@Body() CreateCatDto: CreateCatDto) {
+    return 'This action adds a new cat'
   }
 }
