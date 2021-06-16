@@ -18,6 +18,6 @@ export class CatsController {
 
   @Post()
   async create(@Body() CreateCatDto: CreateCatDto) {
-    return 'This action adds a new cat'
+    return 'This action adds a new cat';
   }
 }
