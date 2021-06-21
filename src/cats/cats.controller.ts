@@ -1,23 +1,19 @@
 import { Body, Controller, Get, Post, Query, Redirect } from '@nestjs/common';
+import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
+import { Cat } from './interfaces/cat.interface';
 
 @Controller('cats')
 export class CatsController {
-  @Get()
-  async findAll(): Promise<string> {
-    return 'This action return cats';
-  }
+  constructor(private catsService: CatsService) {}
 
-  @Get('docs')
-  @Redirect('https://docs.nestjs.com', 302)
-  getDocs(@Query('version') version) {
-    if (version && version === '5') {
-      return { url: 'https://docs.nestjs.com/v5/' };
-    }
+  @Get()
+  async findAll(): Promise<Cat[]> {
+    return this.catsService.findAll();
   }
 
   @Post()
-  async create(@Body() CreateCatDto: CreateCatDto) {
-    return 'This action adds a new cat';
+  async create(@Body() createCatDto: CreateCatDto) {
+    this.catsService.create(createCatDto);
   }
 }
